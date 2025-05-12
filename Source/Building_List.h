@@ -39,8 +39,6 @@ public:
     void set_PLAYER_NUMBER(int PLAYER_NUMBER);
     building* Find_Anamy(int x, int y);
     bool Hit (building* Building, int x, int y, int damage);
-    // void Check_Health(building* Building);
-    // void set_healthDisplays(std::vector<Health*>*);
     bool contains(building* build); // Проверка существования здания в списке
 };
 

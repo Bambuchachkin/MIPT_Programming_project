@@ -9,8 +9,8 @@ void UI_Textures::createTitles() {
         const std::vector<std::string> labels = {
             "Mine: You can't build it",
             "Barrks: Press 1 to select\nCost: 500",
-            "Warrior: Press 2 to select\nCost: 200\nDamage: 50",
-            "Miner: Press 3 to select\nCost: 500\nDamage: 10"
+            "Warrior: Press 2 to select\nCost: 200\nDamage: 100",
+            "Miner: Press 3 to select\nCost: 500\nDamage: 40"
         };
 
         for (const auto& label : labels) {

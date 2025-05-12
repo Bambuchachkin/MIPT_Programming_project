@@ -60,7 +60,10 @@ int main() {
     sf::Sprite Sky_Sprite(sky_texture);
     sf::FloatRect ScaledBounds = (Sky_Sprite).getGlobalBounds();
     float Sky_WIDTH = ScaledBounds.size.x;
-    Sky_Sprite.setScale({SCREEN_WIDTH/Sky_WIDTH,SCREEN_WIDTH/Sky_WIDTH});
+    Sky_Sprite.setScale({1.8f*SCREEN_WIDTH/Sky_WIDTH,1.8f*SCREEN_WIDTH/Sky_WIDTH});
+    Sky_Sprite.setOrigin({0.5f*Sky_WIDTH,0.3f*Sky_WIDTH});
+    Sky_Sprite.setPosition({1.0f*Sky_WIDTH,0.5f*Sky_WIDTH});
+    // Sky_Sprite.setPosition({-0.5f*Sky_WIDTH,-0.3f*Sky_WIDTH});
 
     // UI Текстуры
     UI_Textures uiTextures;
@@ -114,15 +117,19 @@ int main() {
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) && (Created_Map.get_zero_x())<SCREEN_HEIGHT/1.0f+Created_Map.get_cell_height()) {
             // std::cout<<Created_Map.get_zero_x()<<std::endl;
             Created_Map.set_zero_x(Created_Map.get_zero_x() + Created_Map.get_scale()*SPEED);
+            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x, Sky_Sprite.getPosition().y + 1/Created_Map.get_scale()*SPEED/100});
         }
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) && (Created_Map.get_zero_x()>Created_Map.get_scale()*Created_Map.get_cell_height()*0.577*(-1.0f)*Created_Map.Get_Size())){
             Created_Map.set_zero_x(Created_Map.get_zero_x() - Created_Map.get_scale()*SPEED);
+            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x, Sky_Sprite.getPosition().y - 1/Created_Map.get_scale()*SPEED/100});
         }
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) && (Created_Map.get_zero_y()+Created_Map.get_scale()*Created_Map.get_cell_width()*Created_Map.Get_Size()/2>0)){
             Created_Map.set_zero_y(Created_Map.get_zero_y() - Created_Map.get_scale()*SPEED);
+            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x - 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite.getPosition().y});
         }
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) && (Created_Map.get_zero_y()-Created_Map.get_scale()*Created_Map.get_cell_width()*Created_Map.Get_Size()/2<SCREEN_WIDTH)){
             Created_Map.set_zero_y(Created_Map.get_zero_y() + Created_Map.get_scale()*SPEED);
+            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x + 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite.getPosition().y});
         }
 
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) && (Created_Map.get_scale()<1)) {
