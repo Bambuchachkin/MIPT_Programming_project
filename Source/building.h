@@ -5,6 +5,8 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 // #include "Map.h"
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 class building {
 protected:
@@ -20,6 +22,8 @@ protected:
     bool ability_unit; // возможность создание юнитов
     bool ability_money; // наличие денег
     int damage;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
 public:
     building(int x, int y, std::string texture); // базовое здоровье = 100
     virtual ~building() = default;

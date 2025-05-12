@@ -16,7 +16,7 @@ public:
     Health(building* build);
     void update(float SCALE); // Обновляет позицию и текст
     void draw(sf::RenderWindow& window);
-    // building* getBuilding();
+    building* getBuilding();
 };
 
 

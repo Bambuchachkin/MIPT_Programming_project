@@ -12,7 +12,7 @@ std::string extract_filename_b(const std::string& path) {
 // Спрайт - это прямоуголььник у которого есть своя текстура (картинка png),
 // свои размеры, корневая точка и ее координаты
 // Именно этот объект отрисовывает SFML
-building::building(int x, int y, std::string Building_Texture)  {
+building::building(int x, int y, std::string Building_Texture) :sound(buffer) {
     x_coordinate = x;
     y_coordinate = y;
     Scale = 1;

@@ -60,6 +60,11 @@ Map::~Map() {
     delete building_list;
     // available_buildings->~Available_Buildings();
     delete available_buildings;
+    // healthDisplays.clear();
+    //Очистка здоровья
+    for (auto& health : healthDisplays) {
+        delete health;
+    }
     healthDisplays.clear();
 }
 
@@ -296,11 +301,35 @@ void Map::Animation() {
     }
 }
 
+// void Map::updateHealthDisplays() {
+//     for (auto& health : healthDisplays) {
+//         health->update(SCALE);
+//     }
+//     // building_list->set_healthDisplays(&healthDisplays);
+// }
+//
+// void Map::drawHealthDisplays(sf::RenderWindow& window) {
+//     for (auto& health : healthDisplays) {
+//         if (health) {
+//             health->draw(window);
+//         }
+//     }
+// }
+
 void Map::updateHealthDisplays() {
-    for (auto& health : healthDisplays) {
-        health->update(SCALE);
+    auto it = healthDisplays.begin();
+    while (it != healthDisplays.end()) {
+        Health* health = *it;
+        building* build = health->getBuilding();
+        // Провекра на существование, если здания нет, то здоровье очиститься
+        if (!building_list->contains(build) || build->get_health() <= 0) {
+            delete health;
+            it = healthDisplays.erase(it);
+        } else {
+            health->update(SCALE);
+            ++it;
+        }
     }
-    // building_list->set_healthDisplays(&healthDisplays);
 }
 
 void Map::drawHealthDisplays(sf::RenderWindow& window) {
@@ -309,4 +338,12 @@ void Map::drawHealthDisplays(sf::RenderWindow& window) {
             health->draw(window);
         }
     }
+}
+
+
+bool Building_List::contains(building* build){
+    for (auto it = Buildings.begin(); it != Buildings.end(); ++it) {
+        if (it->second == build) return true;
+    }
+    return false;
 }

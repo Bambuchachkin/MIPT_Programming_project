@@ -50,6 +50,7 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
                     building* Building = new Miner(x, y, texture);
                     Buildings.insert(std::pair<std::string, building*>(key, Building));
                     Building->set_Sprite_Color(255,255,255,180);
+                    std::cout<<"MINER"<<'\n';
                     return true;
                 }
             }
@@ -66,7 +67,7 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
                     it->second->set_Sprite_Color(255,255,255,180);
                     it->second->Action(-1);
                     std::string key = extract_filename(texture);
-                    building* Building = new Miner(x, y, texture);
+                    building* Building = new barrak(x, y, texture);
                     Buildings.insert(std::pair<std::string, building*>(key, Building));
                     return true;
                 }
@@ -80,9 +81,18 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
             if (it->second->get_Teg() == "Barracks"  && it->second->get_owner_id() == PLAYER_NUMBER) {
                 // it->second->Action(1);
                 std::string key = extract_filename(texture);
-                building* Building = new unit(x, y, texture);
-                Buildings.insert(std::pair<std::string, building*>(key, Building));
-                Building->set_Sprite_Color(255,255,255,180);
+                if (texture == "../Textures/Miner.png") {
+                    building* Building = new Miner(x, y, texture);
+                    Buildings.insert(std::pair<std::string, building*>(key, Building));
+                    Building->set_Sprite_Color(255,255,255,180);
+                } else {
+                    building* Building = new unit(x, y, texture);
+                    Buildings.insert(std::pair<std::string, building*>(key, Building));
+                    Building->set_Sprite_Color(255,255,255,180);
+                }
+                // building* Building = new unit(x, y, texture);
+                // Buildings.insert(std::pair<std::string, building*>(key, Building));
+                // Building->set_Sprite_Color(255,255,255,180);
                 return true;
             }
         }

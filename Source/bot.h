@@ -8,6 +8,7 @@ class bot {
     Map* map;
     Building_List* building_list;
     Available_Buildings* available_buildings;
+
 public:
     bot(Map* MAP);
     ~bot();

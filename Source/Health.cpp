@@ -48,6 +48,6 @@ void Health::draw(sf::RenderWindow& window) {
     }
 }
 
-// building *Health::getBuilding() {
-//     return Building;
-// }
+building *Health::getBuilding() {
+    return Building;
+}

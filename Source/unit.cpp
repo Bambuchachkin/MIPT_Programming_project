@@ -1,11 +1,15 @@
 #include "unit.h"
 #include <iostream>
 
-unit::unit(int x, int y, std::string texture) : building(x, y, texture) {
+unit::unit(int x, int y, std::string texture) : building(x, y, texture){
     // Teg = teg;
     health = 200;
-    std::cout<<"Unit have been created"<<'\n';
+    std::cout << "Unit have been created" << '\n';
     damage = 100;
+
+    buffer.loadFromFile("../Sound/both.wav");
+    sound.setVolume(100);
+    sound.play();
 }
 
 unit::~unit() {

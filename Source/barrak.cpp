@@ -6,6 +6,10 @@ barrak::barrak(int x, int y, std::string texture) : building(x, y, texture) {
     ability_unit = true;
     want_to_create = false;
     std::cout<<"Barrak have been created"<<'\n';
+
+    buffer.loadFromFile("../Sound/both.wav");
+    sound.setVolume(100);
+    sound.play();
 }
 
 barrak::~barrak() {

@@ -3,6 +3,8 @@
 #include "Map.h"
 #include "Texture_List.h"
 #include "UI_Textures.h"
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 // Константы
 unsigned int SCREEN_WIDTH = 0;
@@ -13,6 +15,7 @@ int FRAME_RATE = 60;
 std::map<std::string, float> CONSTANTS; // Словарь констант для использования в функциях
 std::string BUILDING_TEXTURE = ""; // Текстура создаваемой сущности
 static int turnNumber = 1;
+
 
 int main() {
     // Запуск окна
@@ -213,7 +216,6 @@ int main() {
         Created_Map.drawHealthDisplays(window);
         window.display();
         sf::sleep(sf::milliseconds(1000/FRAME_RATE));
-
 
         // std::cout<<MONEY<<'\n';
     }
