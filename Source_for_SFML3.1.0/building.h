@@ -19,6 +19,7 @@ protected:
     int owner_id; // здесь имеется в виду номер игрока или бота, необходимо для функции захвата
     bool ability_unit; // возможность создание юнитов
     bool ability_money; // наличие денег
+    int damage;
 public:
     building(int x, int y, std::string texture); // базовое здоровье = 100
     virtual ~building() = default;
@@ -42,6 +43,7 @@ public:
     virtual void Action(int i); // флаг в каком направлении делать действие
     virtual bool get_Action() const;
     sf::Color get_Color();
+    int get_damage() const;
 
 };
 

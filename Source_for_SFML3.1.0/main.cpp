@@ -12,7 +12,7 @@ float SPEED = 40; // Скорость перемещения по карте
 int FRAME_RATE = 60;
 std::map<std::string, float> CONSTANTS; // Словарь констант для использования в функциях
 std::string BUILDING_TEXTURE = ""; // Текстура создаваемой сущности
-static int turnNumber = 1;     // Счетчик ходов
+static int turnNumber = 1;
 
 int main() {
     // Запуск окна
@@ -26,6 +26,7 @@ int main() {
     if (!font.loadFromFile("../Font/font.ttf")) {
         std::cerr << "Font not found!" << std::endl;
     }
+    // Создание UI
 
     // Создание карты
     std::string texture_name = "../Textures/BasicLendPattern.png";
@@ -64,7 +65,6 @@ int main() {
     std::vector<sf::Text>* titles = uiTextures.get_ui_title();
     std::vector<sf::Sprite>* sprites = uiTextures.get_ui_textures();
     uiTextures.createInfoPanel(); // Инициализация элементов интерфейса
-
 
     // Настраиваем игровые объекты
     Texture_List texture_list(&Created_Map, "Standart");
@@ -163,6 +163,7 @@ int main() {
 
         //Обновление UI
         uiTextures.updateInfoPanel(Created_Map.get_Money(), Created_Map.get_Current_Player(), turnNumber);
+        Created_Map.updateHealthDisplays();
 
         // Отрисовка
         window.clear(sf::Color::Black);
@@ -181,6 +182,7 @@ int main() {
         for (auto it = Created_Map.get_Building_list()->Buildings.begin(); it!= Created_Map.get_Building_list()->Buildings.end(); it++) {
             it->second->set_Sprite_Scale(Created_Map.get_scale());
             Created_Map.Set_Sprite_Static_Position(it->second->get_Sprite_Pointer(), it->second->get_x_coordinate(), it->second->get_y_coordinate());
+            Created_Map.Animation();
             window.draw(*(it->second->get_Sprite_Pointer()));
         }
 
@@ -192,10 +194,13 @@ int main() {
         for (size_t i = 0; i < sprites->size(); ++i) {
             window.draw((*sprites)[i]);
         }
+
         window.draw(uiTextures.get_info_box()); // Фон
         for (const auto& text : uiTextures.get_info_texts()) { // Используем ссылку
             window.draw(text);
         }
+
+        Created_Map.drawHealthDisplays(window);
 
         window.display();
         sf::sleep(sf::milliseconds(1000/FRAME_RATE));

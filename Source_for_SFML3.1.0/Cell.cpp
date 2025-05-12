@@ -9,6 +9,7 @@ Cell::Cell(int x, int y, std::string Map_Texture) {
     Texture.loadFromFile(Map_Texture);
     Sprite = new sf::Sprite(Texture);
     Texture_Name = Map_Texture;
+    Potencial = 0;
 }
 
 Cell::~Cell() {

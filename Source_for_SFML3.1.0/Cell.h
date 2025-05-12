@@ -11,6 +11,7 @@ class Cell {
     sf::Sprite* Sprite;
     sf::Texture Texture;
     std::string Texture_Name;
+    int Potencial;
 public:
     // std::string Texture_Name;
     Cell(int x, int y, std::string texture);

@@ -10,11 +10,11 @@ class UI_Textures {
     std::vector<sf::Texture> tex_textures;
     std::vector<sf::Sprite> ui_textures;
     std::vector<sf::Text> ui_title;
+    float SCREEN_WIDTH;
+    float SCREEN_HEIGHT;
     std::vector<sf::Text> infoTexts;
     sf::RectangleShape infoBox;
     sf::RectangleShape texBox;
-    float SCREEN_WIDTH;
-    float SCREEN_HEIGHT;
 
     void createTitles();
 
@@ -33,6 +33,7 @@ public:
     void set_position_title();
     void set_color_title();
     void set_transparency(int transparency);
+
     void createInfoPanel();
     void updateInfoPanel(int money, int currentPlayer, int turnNumber);
 };

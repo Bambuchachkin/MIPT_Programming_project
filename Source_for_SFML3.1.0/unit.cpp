@@ -1,12 +1,19 @@
 #include "unit.h"
 #include <iostream>
+#include <SFML/Audio.hpp>
 
 unit::unit(int x, int y, std::string texture) : building(x, y, texture) {
     // Teg = teg;
-    health = 200;
-    std::cout<<"Unit have been created"<<'\n';
+    health = 300;
+    std::cout << "Unit have been created" << '\n';
+    damage = 100;
+    if (!bothBuffer.loadFromFile("../Sound/both.wav")) {
+        std::cerr << "Ошибка загрузки звука!" << std::endl;
+    } else {
+        bothSound.setBuffer(bothBuffer);
+        bothSound.play();
+    }
 }
-
 unit::~unit() {
     std::cout<<"Unit have been destroyed"<<'\n';
 }

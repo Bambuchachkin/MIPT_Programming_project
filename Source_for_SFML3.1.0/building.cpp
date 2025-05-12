@@ -27,6 +27,7 @@ building::building(int x, int y, std::string Building_Texture)  {
     Sprite = new sf::Sprite(Texture);
     Texture_Name = Building_Texture;
     Teg = extract_filename_b(Texture_Name);
+    damage = 0;
 }
 
 // building::~building() {
@@ -88,6 +89,7 @@ void building::set_Sprite_Color(int r, int g, int b, int a) {
 }
 void building::set_health(int delta_health){
     health += delta_health;
+    if (health < 0) health = 0;
 }
 int building::get_health() const {
     return health;
@@ -112,4 +114,8 @@ bool building::get_Action() const {
 
 sf::Color  building::get_Color() {
     return Sprite->getColor();
+}
+
+int building::get_damage() const {
+    return damage;
 }

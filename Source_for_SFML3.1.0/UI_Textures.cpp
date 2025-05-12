@@ -7,10 +7,10 @@ void UI_Textures::createTitles() {
         ui_title.clear();
 
         const std::vector<std::string> labels = {
-            "Mine: You can't build it",
-            "Barrks: Press 1 to select\nCost: 500",
-            "Warrior: Press 2 to select\nCost: 200",
-            "Miner: Press 3 to select\nCost: 500"
+                "Mine: You can't build it",
+                "Barrks: Press 1 to select\nCost: 500",
+                "Warrior: Press 2 to select\nCost: 200",
+                "Miner: Press 3 to select\nCost: 500"
         };
 
         for (const auto& label : labels) {
@@ -26,11 +26,11 @@ UI_Textures::UI_Textures() : SCREEN_WIDTH(2048.f), SCREEN_HEIGHT(1280.f) {
         createTitles();
     }
     std::vector<std::string> paths = {
-        // "../Textures/Barracks.png",
-        "../Textures/Mine.png",
-        "../Textures/Barracks.png",
-        "../Textures/Warrior.png",
-        "../Textures/Miner.png"
+            // "../Textures/Barracks.png",
+            "../Textures/Mine.png",
+            "../Textures/Barracks.png",
+            "../Textures/Warrior.png",
+            "../Textures/Miner.png"
     };
 
     // Загрузка текстур
@@ -66,7 +66,7 @@ std::vector<sf::Sprite>* UI_Textures::get_ui_textures() {
 }
 
 // std::vector<sf::Sprite>* UI_Textures::get_ui_textures() {
-    // return &ui_textures;
+// return &ui_textures;
 // }
 
 std::vector<sf::Text>* UI_Textures::get_ui_title() {

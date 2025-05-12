@@ -12,7 +12,9 @@ std::string extract_filename(const std::string& path) {
 }
 
 // Создаем дефолтный пустой словарь
-Building_List::Building_List() {}
+Building_List::Building_List() {
+    PLAYER_NUMBER = 1;
+}
 
 Building_List::~Building_List() {
     for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
@@ -24,8 +26,10 @@ Building_List::~Building_List() {
 int Building_List::Count_Buildings(std::string key) {
     int number = 0;
     auto range = Buildings.equal_range(key);
-    for (auto it = range.first; it != range.second; it++) {
-        number++;
+    for (auto it = range.first; it != range.second; it++ ) {
+        if (it->second->get_owner_id() == PLAYER_NUMBER) {
+            number++;
+        }
     }
     return number;
 }
@@ -37,7 +41,7 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
     //     }
     // } // сбрасываем активность всех казарм
 
-    if (texture == "../Textures/Miner.png" && Count_Buildings("Miner")<1 ) {
+    if (texture == "../Textures/Miner.png" && Count_Buildings("Miner")<1) {
         for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
             if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
                 if (it->second->get_Teg() == "Mine") {
@@ -57,8 +61,10 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
         for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
             if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
                 sf::Color color = {255, 255, 255};
-                if (it->second->get_Teg() == "Miner" && it->second->get_Color() == color) {
+                if (it->second->get_Teg() == "Miner" && it->second->get_Color() == color && it->second->get_owner_id() == PLAYER_NUMBER) {
                     // it->second->Action(1);
+                    it->second->set_Sprite_Color(255,255,255,180);
+                    it->second->Action(-1);
                     std::string key = extract_filename(texture);
                     building* Building = new Miner(x, y, texture);
                     Buildings.insert(std::pair<std::string, building*>(key, Building));
@@ -71,7 +77,7 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
 
     for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
         if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
-            if (it->second->get_Teg() == "Barracks") {
+            if (it->second->get_Teg() == "Barracks"  && it->second->get_owner_id() == PLAYER_NUMBER) {
                 // it->second->Action(1);
                 std::string key = extract_filename(texture);
                 building* Building = new unit(x, y, texture);
@@ -169,10 +175,27 @@ building* Building_List::Find_Building(std::string key) {
     return nullptr;
 }
 
-void Building_List::Check_Health(int x_coord, int y_coord, std::string key) {
+building* Building_List::Find_Anamy(int x, int y) {
+    std::vector<std::string> Keys = {"Warrior", "Miner", "Barracks"};
+    for (auto it_1 = Keys.begin(); it_1 != Keys.end(); it_1++) {
+        auto range = Buildings.equal_range(*it_1);
+        for (auto it = range.first; it != range.second; it++) {
+            if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
+                if (it->second->get_owner_id() != PLAYER_NUMBER) {
+                    return it->second;
+                }
+            }
+        }
+    }
+    return nullptr;
+}
+
+bool Building_List::Check_Health(int x_coord, int y_coord, std::string key) {
     if (Find_Building(x_coord, y_coord, key)->get_health() <= 0){
         Destroy_Building(x_coord, y_coord, key);
+        return true;
     }
+    return false;
 }
 
 void Building_List::Hit(int x, int y) {
@@ -191,28 +214,10 @@ void Building_List::Hit(int x, int y) {
     }
 }
 
-// bool Building_List::Move(int x, int y) {
-//     for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
-//         if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
-//             if (it->second->get_Teg() == "Warrior" || it->second->get_Teg() == "grass") {
-//                 for (auto it1 = Buildings.begin(); it1 != Buildings.end(); it1++) {
-//                     it1->second->Action(-1);
-//                 } // сбрасываем активность всех воинов
-//                 it->second->Action(1);
-//                 return false;
-//             }
-//         }
-//     }
-//     // В случае если мы тыкнули не на солдата
-//     for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
-//         if ((it->first == "Warrior" || it->first == "grass") && it->second->get_Action()) {
-//             it->second->Action(-1);
-//             it->second->set_x_coordinate(x);
-//             it->second->set_y_coordinate(y);
-//             return true;
-//         }
-//     } // сбрасываем активность всех воинов
-// }
+bool Building_List::Hit(building* Building, int x, int y, int damage) {
+    Building->set_health(-damage);
+    return Check_Health(x,y,Building->get_Teg());
+}
 
 bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
     // 2. Проверяем клик по юниту
@@ -231,18 +236,31 @@ bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
     for (auto& pair : Buildings) {
         sf::Color color = {255, 255, 255};
         if (pair.second && (pair.first == "Warrior" || pair.first == "Miner") && pair.second->get_Action() && pair.second->get_Color() == color) {
-            if (abs(x-pair.second->get_x_coordinate())<2 && abs(y-pair.second->get_y_coordinate())<2) {
-                pair.second->set_x_coordinate(x);
-                pair.second->set_y_coordinate(y);
-                pair.second->Action(-1); // Деактивируем после перемещения
-                pair.second->set_Sprite_Color(255,255,255,180);
-                for (auto& pair : Buildings) {
-                    if ((pair.first == "Warrior" || pair.first == "Miner") && pair.second) {
-                        pair.second->Action(-1);
-                        // I just want this shit to work 2:08 08.05.2025
+            if (abs(x-pair.second->get_x_coordinate()) < 2 && abs(y-pair.second->get_y_coordinate()) < 2) {
+                if (Find_Anamy(x,y)) {
+                    if (Hit(Find_Anamy(x,y), x, y, pair.second->get_damage()) && !Find_Anamy(x,y)) {
+                        pair.second->set_x_coordinate(x);
+                        pair.second->set_y_coordinate(y);
+                    }
+                    pair.second->Action(-1); // Деактивируем после перемещения
+                    pair.second->set_Sprite_Color(255,255,255,180);
+                    std::cout<<"DAMAGE : "<<pair.second->get_damage()<<"\n";
+                    // std::cout<<"HEALTH : "<<Find_Anamy(x,y)->get_health()<<"\n";
+                } else {
+                    pair.second->set_x_coordinate(x);
+                    pair.second->set_y_coordinate(y);
+                    pair.second->Action(-1); // Деактивируем после перемещения
+                    pair.second->set_Sprite_Color(255,255,255,180);
+                    for (auto& pair : Buildings) {
+                        if ((pair.first == "Warrior" || pair.first == "Miner") && pair.second) {
+                            pair.second->Action(-1);
+                            // I just want this shit to work 2:08 08.05.2025
+                        }
                     }
                 }
                 return true;
+            } else {
+                pair.second->Action(-1);
             }
         }
     }
@@ -275,4 +293,31 @@ void Building_List::Global_Diactivate() {
     for (auto& pair : Buildings) {
         pair.second->Action(-1);
     }
+}
+
+building* Building_List::get_Sprite_Active_Unit() {
+    sf::Color color = {255, 255, 255};
+    auto range = Buildings.equal_range("Miner");
+    for (auto it = range.first; it != range.second; it++) {
+        if (it->second->get_Action() && it->second->get_Sprite_Pointer()->getColor() == color) {
+            return(it->second);
+        }
+    }
+    range = Buildings.equal_range("Warrior");
+    for (auto it = range.first; it != range.second; it++) {
+        if (it->second->get_Action() && it->second->get_Sprite_Pointer()->getColor() == color) {
+            return(it->second);
+        }
+    }
+    return nullptr;
+}
+
+void Building_List::set_PLAYER_NUMBER(int pLAYER_NUMBER) {
+    PLAYER_NUMBER = pLAYER_NUMBER;
+}
+bool Building_List::contains(building* build){
+    for (auto it = Buildings.begin(); it != Buildings.end(); ++it) {
+        if (it->second == build) return true;
+    }
+    return false;
 }
