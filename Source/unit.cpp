@@ -8,7 +8,7 @@ unit::unit(int x, int y, std::string texture) : building(x, y, texture){
     damage = 100;
 
     buffer.loadFromFile("../Sound/both.wav");
-    sound.setVolume(100);
+    sound.setVolume(20);
     sound.play();
 }
 

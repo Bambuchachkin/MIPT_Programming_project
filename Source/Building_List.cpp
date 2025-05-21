@@ -2,6 +2,7 @@
 #include "barrak.h"
 #include "unit.h"
 #include "Miner.h"
+#include "Hall.h"
 
 std::string extract_filename(const std::string& path) {
     size_t start = path.find_last_of("/\\") + 1;
@@ -76,9 +77,27 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
         return false;
     }
 
+    if (texture == "../Textures/Hall.png" || texture == "../Textures/2/Hall.png") {
+        for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
+            if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
+                sf::Color color = {255, 255, 255};
+                if (it->second->get_Teg() == "Miner" && it->second->get_Color() == color && it->second->get_owner_id() == PLAYER_NUMBER) {
+                    // it->second->Action(1);
+                    it->second->set_Sprite_Color(255,255,255,180);
+                    it->second->Action(-1);
+                    std::string key = extract_filename(texture);
+                    building* Building = new Hall(x, y, texture);
+                    Buildings.insert(std::pair<std::string, building*>(key, Building));
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
         if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
-            if (it->second->get_Teg() == "Barracks"  && it->second->get_owner_id() == PLAYER_NUMBER) {
+            if ((it->second->get_Teg() == "Barracks" || it->second->get_Teg() == "Hall") && it->second->get_owner_id() == PLAYER_NUMBER) {
                 // it->second->Action(1);
                 std::string key = extract_filename(texture);
                 if (texture == "../Textures/Miner.png") {
@@ -113,6 +132,13 @@ bool Building_List::Add_Building(int x, int y, std::string texture) {
             // it->second->get_Texture_Name() == texture;
             // Тут он понял, что мы создаем дубликат и отказывает нам => объект не создается, игрок не тратит деньги
             return false;
+        }
+    }
+    if (texture == "../Textures/Barracks.png" || texture == "../Textures/2/Barracks.png") {
+        for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
+            if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y && it->second->get_Teg() == "Hall") {
+                return false;
+            }
         }
     }
     if (texture == "../Textures/Barracks.png" || texture == "../Textures/2/Barracks.png") {
@@ -186,7 +212,7 @@ building* Building_List::Find_Building(std::string key) {
 }
 
 building* Building_List::Find_Anamy(int x, int y) {
-    std::vector<std::string> Keys = {"Warrior", "Miner", "Barracks"};
+    std::vector<std::string> Keys = {"Warrior", "Miner", "Barracks", "Hall"};
     for (auto it_1 = Keys.begin(); it_1 != Keys.end(); it_1++) {
         auto range = Buildings.equal_range(*it_1);
         for (auto it = range.first; it != range.second; it++) {

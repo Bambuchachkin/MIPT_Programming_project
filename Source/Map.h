@@ -24,6 +24,8 @@ class Map{
     std::vector<int> MONEY;
     float Sprite_Flactuation[2];
     std::vector<Health*> healthDisplays;
+    int Halls_Number_1;
+    int Halls_Number_2;
 
 public:
     std::vector<std::vector<Cell*>> Cells_Data;
@@ -61,6 +63,7 @@ public:
     void Animation();
     void updateHealthDisplays(); // Обновить все Health
     void drawHealthDisplays(sf::RenderWindow& window); // Отрисовать все Health
+    bool Check_Halls();
 };
 
 #endif //MAP_H

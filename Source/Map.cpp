@@ -47,6 +47,8 @@ Map::Map(unsigned int Map_Size, std::string Map_Texture) {
     BUILDING_TEXTURE = "";
     Sprite_Flactuation[0] = 0; //величина смещения
     Sprite_Flactuation[1] = -1; //показывает направление роста координаты
+    Halls_Number_1 = 0;
+    Halls_Number_2 = 0;
 }
 
 Map::~Map() {
@@ -164,9 +166,23 @@ void Map::Pressed_Check(std::vector<int>* v) {
     building_list->Find_Building("FramePattern")->set_y_coordinate(y);
     // Обрабатываем строительство
     if (BUILDING_TEXTURE != "") { // Доступ к сущности уже был проверен перед вызовом
+        if (BUILDING_TEXTURE == "../Textures/Barracks.png") {
+            if (building_list->Count_Buildings("Hall") == 0) {
+                std::cout << "Barracks "<< building_list->Count_Buildings("Barrack") << std::endl;
+                BUILDING_TEXTURE = "../Textures/Hall.png";
+            }
+        }
+        if (BUILDING_TEXTURE == "../Textures/2/Barracks.png") {
+            if (building_list->Count_Buildings("Hall") == 0) {
+                BUILDING_TEXTURE = "../Textures/2/Hall.png";
+            }
+        }
         if (building_list->Add_Building(x, y, BUILDING_TEXTURE)) {
             building_list->Find_Building(x, y, extract_filename_M(BUILDING_TEXTURE))->set_Sprite_Origin(CELL_WIDTH / 2.0f, CELL_HEIGHT * 1.0f);
             building_list->Find_Building(x, y, extract_filename_M(BUILDING_TEXTURE))->set_owner_id(PLAYER_NUMBER);
+            if (BUILDING_TEXTURE == "../Textures/Hall.png" || BUILDING_TEXTURE == "../Textures/2/Hall.png") {
+                building_list->Find_Building(x, y, extract_filename_M(BUILDING_TEXTURE))->set_Sprite_Origin(CELL_WIDTH / 1.95f, CELL_HEIGHT * 1.15f);
+            }
             MONEY[PLAYER_NUMBER-1]-=BUILDING_COST;
             std::cout << "Player Number: "<<PLAYER_NUMBER<<std::endl;
             std::cout << "Money: "<< MONEY[PLAYER_NUMBER-1] << std::endl;
@@ -346,4 +362,17 @@ bool Building_List::contains(building* build){
         if (it->second == build) return true;
     }
     return false;
+}
+
+bool Map::Check_Halls() {
+    if ((building_list->Count_Buildings("Hall")<Halls_Number_1 && PLAYER_NUMBER == 1) || (building_list->Count_Buildings("Hall")<Halls_Number_2 && PLAYER_NUMBER == 2)){
+        return false;
+    } else {
+        if (PLAYER_NUMBER == 1) {
+            Halls_Number_1 = building_list->Count_Buildings("Hall");
+        } else {
+            Halls_Number_2 = building_list->Count_Buildings("Hall");
+        }
+        return true;
+    }
 }

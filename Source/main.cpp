@@ -15,6 +15,7 @@ int FRAME_RATE = 60;
 std::map<std::string, float> CONSTANTS; // Словарь констант для использования в функциях
 std::string BUILDING_TEXTURE = ""; // Текстура создаваемой сущности
 static int turnNumber = 1;
+bool STILL_GAME = true;
 
 
 int main() {
@@ -110,6 +111,7 @@ int main() {
             {
                 if (mouseButtonPressed->button == sf::Mouse::Button::Left)
                 {
+                    uiTextures.handleClick(mouseButtonPressed->position.x, mouseButtonPressed->position.y);
                     Created_Map.get_pressed_sell_position(mouseButtonPressed->position.x, mouseButtonPressed->position.y);
                 }
             }
@@ -205,6 +207,7 @@ int main() {
 
         // Отрисовка UI
         window.draw(uiTextures.get_tex_box());
+        // window.draw(uiTextures.get_help_box());
         for (size_t i = 0; i < titles->size(); ++i) {
             window.draw((*titles)[i]);
         }
@@ -221,6 +224,25 @@ int main() {
         }
 
         Created_Map.drawHealthDisplays(window);
+
+        window.draw(uiTextures.get_toggle_button());
+        window.draw(*uiTextures.get_ttext()->begin());
+        if (uiTextures.isPanelVisible) {
+            window.draw(uiTextures.get_popup_window());
+            window.draw(uiTextures.get_ttext()->back());
+        }
+
+        if (!Created_Map.Check_Halls()) {
+            STILL_GAME = false;
+        }
+
+        if (!STILL_GAME) {
+            window.draw(uiTextures.get_winner_box());
+            if (uiTextures.get_winner_text()) {
+                window.draw(*uiTextures.get_winner_text()->begin());
+            }
+        }
+
         window.display();
         sf::sleep(sf::milliseconds(1000/FRAME_RATE));
 

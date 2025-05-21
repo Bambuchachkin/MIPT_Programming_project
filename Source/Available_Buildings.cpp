@@ -10,11 +10,13 @@
 // Это значит что игрок с номером 1 может создавать building с текстурой "../grass.png"
 Available_Buildings::Available_Buildings() {
     Buildings.insert(std::pair<int, std::string>(1, "Barracks"));
+    Buildings.insert(std::pair<int, std::string>(1, "Hall"));
     // Buildings.insert(std::pair<int, std::string>(1, "grass"));
     Buildings.insert(std::pair<int, std::string>(1, "Warrior"));
     Buildings.insert(std::pair<int, std::string>(1, "Miner"));
 
     Buildings.insert(std::pair<int, std::string>(2, "Barracks"));
+    Buildings.insert(std::pair<int, std::string>(2, "Hall"));
     Buildings.insert(std::pair<int, std::string>(2, "Warrior"));
     Buildings.insert(std::pair<int, std::string>(2, "Miner"));
 }

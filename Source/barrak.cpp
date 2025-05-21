@@ -8,7 +8,7 @@ barrak::barrak(int x, int y, std::string texture) : building(x, y, texture) {
     std::cout<<"Barrak have been created"<<'\n';
 
     buffer.loadFromFile("../Sound/both.wav");
-    sound.setVolume(100);
+    sound.setVolume(20);
     sound.play();
 }
 
