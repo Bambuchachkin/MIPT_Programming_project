@@ -15,6 +15,8 @@
 class Building_List {
     // std::multimap<std::string, building*> Buildings;
     int PLAYER_NUMBER;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
     // std::vector<Health*> healthDisplays;
 public:
     std::multimap<std::string, building*> Buildings;

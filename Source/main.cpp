@@ -4,7 +4,11 @@
 #include "Texture_List.h"
 #include "UI_Textures.h"
 #include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/Music.hpp>
 #include <SFML/Audio/SoundBuffer.hpp>
+sf::SoundBuffer buffer;
+sf::Sound sound(buffer);
+
 
 // Константы
 unsigned int SCREEN_WIDTH = 0;
@@ -16,9 +20,22 @@ std::map<std::string, float> CONSTANTS; // Словарь констант дл�
 std::string BUILDING_TEXTURE = ""; // Текстура создаваемой сущности
 static int turnNumber = 1;
 bool STILL_GAME = true;
+bool STILL_MUSIC = true;
 
 
 int main() {
+    // Music
+    sf::SoundBuffer buffer;
+    sf::Sound sound(buffer);
+    sf::Music music;
+    if (!music.openFromFile("../Sound/Music.wav"))
+        return -1; // error
+    music.setVolume(300);
+    music.setLoopPoints({sf::milliseconds(500), sf::seconds(35)});
+    music.setLooping(true);
+    music.play();
+
+
     // Запуск окна
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     SCREEN_WIDTH = desktop.size.x;
@@ -234,6 +251,13 @@ int main() {
 
         if (!Created_Map.Check_Halls()) {
             STILL_GAME = false;
+            if (STILL_MUSIC) {
+                buffer.loadFromFile("../Sound/Barracks.wav");
+                sound.setVolume(80);
+                sound.play();
+                STILL_MUSIC = false;
+            }
+
         }
 
         if (!STILL_GAME) {

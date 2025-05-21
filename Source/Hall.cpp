@@ -7,8 +7,8 @@ Hall::Hall(int x, int y, std::string texture) : building(x, y, texture) {
     want_to_create = false;
     std::cout<<"Hall have been created"<<'\n';
 
-    buffer.loadFromFile("../Sound/both.wav");
-    sound.setVolume(20);
+    buffer.loadFromFile("../Sound/Hall.wav");
+    sound.setVolume(600);
     sound.play();
 }
 

@@ -7,8 +7,8 @@ Miner::Miner(int x, int y, std::string texture) : building(x, y, texture) {
     std::cout<<"Unit have been created"<<'\n';
     damage = 40;
 
-    buffer.loadFromFile("../Sound/both.wav");
-    sound.setVolume(20);
+    buffer.loadFromFile("../Sound/Miner.wav");
+    sound.setVolume(60);
     sound.play();
 }
 

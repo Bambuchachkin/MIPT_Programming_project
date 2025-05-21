@@ -3,6 +3,8 @@
 #include "unit.h"
 #include "Miner.h"
 #include "Hall.h"
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 
 std::string extract_filename(const std::string& path) {
     size_t start = path.find_last_of("/\\") + 1;
@@ -13,7 +15,7 @@ std::string extract_filename(const std::string& path) {
 }
 
 // Создаем дефолтный пустой словарь
-Building_List::Building_List() {
+Building_List::Building_List() : sound(buffer) {
     PLAYER_NUMBER = 1;
 }
 
@@ -252,6 +254,9 @@ void Building_List::Hit(int x, int y) {
 
 bool Building_List::Hit(building* Building, int x, int y, int damage) {
     Building->set_health(-damage);
+    buffer.loadFromFile("../Sound/Hit.mp3");
+    sound.setVolume(20);
+    sound.play();
     return Check_Health(x,y,Building->get_Teg());
 }
 
@@ -314,6 +319,11 @@ int Building_List::Stonks(int PLAYER_NUMBER) {
                 k++;
             }
         }
+    }
+    if (k) {
+        buffer.loadFromFile("../Sound/Stonks.wav");
+        sound.setVolume(80);
+        sound.play();
     }
     // На нет и суда нет, ЙОУ!
     return k;
