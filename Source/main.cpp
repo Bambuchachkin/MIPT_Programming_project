@@ -252,7 +252,7 @@ int main() {
         if (!Created_Map.Check_Halls()) {
             STILL_GAME = false;
             if (STILL_MUSIC) {
-                buffer.loadFromFile("../Sound/Barracks.wav");
+                buffer.loadFromFile("../Sound/Winner.wav");
                 sound.setVolume(80);
                 sound.play();
                 STILL_MUSIC = false;
