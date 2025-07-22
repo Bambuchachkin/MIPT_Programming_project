@@ -1,0 +1,9 @@
+# ninja log v6
+2	324	1746482116999083707	CMakeFiles/MIPT_With_Source.dir/Source/Available_Buildings.cpp.o	f46b75bf6999a407
+2	600	1746482116998534189	CMakeFiles/MIPT_With_Source.dir/Source/building.cpp.o	64ee2b18eb33eb19
+2	643	1746482116998642541	CMakeFiles/MIPT_With_Source.dir/Source/Building_List.cpp.o	aa1fe0378eaa968
+1	778	1746482116998003155	CMakeFiles/MIPT_With_Source.dir/Source/Map.cpp.o	7937fb5c01913db6
+1	786	1746482116997764518	CMakeFiles/MIPT_With_Source.dir/Source/Cell.cpp.o	65b6d47bfa4a00ad
+1	976	1746482116996359875	CMakeFiles/MIPT_With_Source.dir/Source/main.cpp.o	2643b64305295c73
+2	1028	1746482116998297864	CMakeFiles/MIPT_With_Source.dir/Source/Texture_List.cpp.o	b0e6362599137f84
+1028	1089	1746482118023359787	MIPT_With_Source	ace1240e897b68f1

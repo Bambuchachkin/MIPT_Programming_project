@@ -1,0 +1,3 @@
+/home/bambuchachkin/CLionProjects/MIPT_With_Source/cmake-build-debug/CMakeFiles/MIPT_With_Source.dir
+/home/bambuchachkin/CLionProjects/MIPT_With_Source/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/bambuchachkin/CLionProjects/MIPT_With_Source/cmake-build-debug/CMakeFiles/rebuild_cache.dir
