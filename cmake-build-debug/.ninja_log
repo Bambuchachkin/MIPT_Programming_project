@@ -1,16 +1,16 @@
 # ninja log v6
+5	1174	1753186329526347862	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/unit.cpp.o	481abac74d269b91
 3	1010	1753186860913946802	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/main.cpp.o	4c85f8b01d55be82
-4	863	1753186443622475913	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Health.cpp.o	1a87f1d8df1183db
+2	1457	1753186329524347832	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/building.cpp.o	ba5806a6b199f4dc
+649	799	1753186913469582743	MIPT_With_Source	36e563352ae28a5
 2	2028	1753186329523347816	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Texture_List.cpp.o	f2138c9ac32f0ef1
+4	649	1753186912824562536	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Hall.cpp.o	b0e9d28276f6dd38
+3	1198	1753186329524347832	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Building_List.cpp.o	68c0162a2dbfda3a
 2	1677	1753186329523347816	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Map.cpp.o	bf1ea41976a64b66
+3	69	1753254035466594985	build.ninja	39377924aa491d9b
+4	863	1753186443622475913	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Health.cpp.o	1a87f1d8df1183db
 4	1063	1753186553334087342	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/UI_Textures.cpp.o	31b54ac9ab3661c8
 1	1415	1753186329522347801	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Cell.cpp.o	a78cea1b9269f99a
 5	1564	1753186329526347862	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Miner.cpp.o	fc6c16c69cc8135f
 3	1334	1753186329524347832	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Available_Buildings.cpp.o	c94c09fb703f849a
-3	1198	1753186329524347832	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Building_List.cpp.o	68c0162a2dbfda3a
-2	1457	1753186329524347832	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/building.cpp.o	ba5806a6b199f4dc
-5	1174	1753186329526347862	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/unit.cpp.o	481abac74d269b91
-3	69	1753186912806561972	build.ninja	39377924aa491d9b
 3	611	1753186912824562536	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/barrak.cpp.o	84aaced428f5d55d
-4	649	1753186912824562536	CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Hall.cpp.o	b0e9d28276f6dd38
-649	799	1753186913469582743	MIPT_With_Source	36e563352ae28a5
