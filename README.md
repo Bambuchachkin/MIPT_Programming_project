@@ -17,9 +17,11 @@
 
 <!-- ![Отрисовка карты.](/Images/2.png) -->
 
-2) В свойствах ярkыка смените значек, указав путь `...\MIPT_Programming_project\Build\Icon.ico`
+2) В свойствах ярлыка смените значек, указав путь `...\MIPT_Programming_project\Build\Icon.ico`
 
- ![Alt text 1](/Images/3.png)  ![Alt text 2](/Images/4.png) 
+ ![Alt text 1](/Images/3.png)  
+ 
+ ![Alt text 2](/Images/4.png) 
 
 <!-- ![Отрисовка карты.](/Images/3.png) -->
 
