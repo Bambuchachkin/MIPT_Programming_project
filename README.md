@@ -11,7 +11,6 @@
 <td style="border: none;">
 
 0) Склонируйте к себе на пк папки:
-
 `Build`
 `Font`
 `Sound`
