@@ -11,15 +11,19 @@
 
 1) При помощи средств windows создайте ярлык на рабочем столе, указав путь к объекту `...\MIPT_Programming_project\Build\MIPT_With_Source.exe`
 
-![Отрисовка карты.](/Images/1.png)
+| ![Alt text 1](/Images/1.png) | ![Alt text 2](/Images/2.png) |
 
-![Отрисовка карты.](/Images/2.png)
+<!-- ![Отрисовка карты.](/Images/1.png) -->
+
+<!-- ![Отрисовка карты.](/Images/2.png) -->
 
 2) В свойствах ярkыка смените значек, указав путь `...\MIPT_Programming_project\Build\Icon.ico`
 
-![Отрисовка карты.](/Images/3.png)
+| ![Alt text 1](/Images/3.png) | ![Alt text 2](/Images/4.png) |
 
-![Отрисовка карты.](/Images/4.png)
+<!-- ![Отрисовка карты.](/Images/3.png) -->
+
+<!-- ![Отрисовка карты.](/Images/4.png) -->
 
 ![Отрисовка карты.](/Images/5.png)
 
