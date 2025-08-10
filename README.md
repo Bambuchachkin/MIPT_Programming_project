@@ -4,19 +4,40 @@
 ### Цель проекта:
 Создать пошаговую стратегию.
 
+### Инструкция для нативного использования в windows:
+<table>
+<tr>
+<td style="border: none;">
+
+1) При помощи средств windows создайте ярлык на рабочем столе, указав путь к объекту `...\MIPT_Programming_project\Build\MIPT_With_Source.exe`
+
+![Отрисовка карты.](/Images/1.png)
+
+![Отрисовка карты.](/Images/2.png)
+
+2) В свойствах ярkыка смените значек, указав путь `...\MIPT_Programming_project\Build\Icon.ico`
+
+![Отрисовка карты.](/Images/3.png)
+
+![Отрисовка карты.](/Images/4.png)
+
+![Отрисовка карты.](/Images/5.png)
+
+</td> </tr> </table>
+
 ### Инструкция сборки:
 
 <table>
 <tr>
 <td style="border: none;">
 
-На машине с установленной библиотекой SFML 3.0.0 (3.1.0):
+На машине с установленной библиотекой SFML 2.6.2 / 3.0.0 / 3.1.0:
 
 1. Скопировать репозиторий
-2. Перейти в папку `Source` (или `Source_for_SFML3.1.0`)
+2. Перейти в папку `Source_for_SFML2.6.2` / `Source_for_SFML3.0.0` / `Source_for_SFML3.1.0`
 3. Исполнить команды:
    ```bash
-   g++ *.cpp -o sfml_app -lsfml-graphics -lsfml-window -lsfml-system
+   g++ *.cpp -o sfml_app -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
    ```
    ```bash
    ./sfml_app
