@@ -4,12 +4,25 @@
 ### Цель проекта:
 Создать пошаговую стратегию.
 
-### Инструкция для нативного использования в windows:
+### Инструкция для нативного использования в windows (SFML 2.6.2):
+
 <table>
 <tr>
 <td style="border: none;">
 
-1) При помощи средств windows создайте ярлык на рабочем столе, указав путь к объекту `...\MIPT_Programming_project\Build\MIPT_With_Source.exe`
+0) Склонируйте весь репозиторий к себе на пк папки:
+
+`Build`
+
+`Font`
+
+`Sound`
+
+`Source_for_SFML2.6.2`
+
+`Textures`
+
+1) При помощи средств windows создайте ярлык на рабочем столе, указав путь к объекту `...\Build\MIPT_With_Source.exe`
 
  ![Alt text 1](/Images/1.png)  ![Alt text 2](/Images/2.png) 
 
@@ -17,7 +30,7 @@
 
 <!-- ![Отрисовка карты.](/Images/2.png) -->
 
-2) В свойствах ярлыка смените значек, указав путь `...\MIPT_Programming_project\Build\Icon.ico`
+2) В свойствах ярлыка смените значек, указав путь `...\Build\Icon.ico`
 
  ![Alt text 1](/Images/3.png)  
  
