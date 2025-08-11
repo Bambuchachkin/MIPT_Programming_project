@@ -131,6 +131,7 @@ int main() {
             {
                 if (event.mouseButton.button == sf::Mouse::Button::Left)
                 {
+                    uiTextures.handleClick(event.mouseButton.x, event.mouseButton.y);
                     Created_Map.get_pressed_sell_position(event.mouseButton.x, event.mouseButton.y);
                 }
             }

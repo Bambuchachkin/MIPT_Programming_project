@@ -49,83 +49,83 @@ cmake_ninja_workdir = /home/bambuchachkin/CLionProjects/MIPT_Programming_project
 
 build cmake_object_order_depends_target_MIPT_With_Source: phony || .
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/main.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/main.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/main.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/main.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/main.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Cell.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Cell.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Cell.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Cell.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Cell.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Cell.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Map.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Map.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Map.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Map.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Map.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Map.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Texture_List.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Texture_List.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Texture_List.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Texture_List.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Texture_List.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Texture_List.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/building.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/building.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/building.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/building.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/building.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/building.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Building_List.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Building_List.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Building_List.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Building_List.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Building_List.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Building_List.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Available_Buildings.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Available_Buildings.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Available_Buildings.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Available_Buildings.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Available_Buildings.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Available_Buildings.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/UI_Textures.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/UI_Textures.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/UI_Textures.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/UI_Textures.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/UI_Textures.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/UI_Textures.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Health.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Health.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Health.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Health.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Health.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Health.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Miner.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Miner.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Miner.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Miner.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Miner.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Miner.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/unit.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/unit.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/unit.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/unit.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/unit.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/unit.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/barrak.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/barrak.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/barrak.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/barrak.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/barrak.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/barrak.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
-build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Hall.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.0/Hall.cpp || cmake_object_order_depends_target_MIPT_With_Source
-  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Hall.cpp.o.d
+build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Hall.cpp.o: CXX_COMPILER__MIPT_With_Source_unscanned_Debug /home/bambuchachkin/CLionProjects/MIPT_Programming_project/Source_for_SFML2.6.2/Hall.cpp || cmake_object_order_depends_target_MIPT_With_Source
+  DEP_FILE = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Hall.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/MIPT_With_Source.dir
-  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0
+  OBJECT_FILE_DIR = CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2
 
 
 # =============================================================================
@@ -135,7 +135,7 @@ build CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Hall.cpp.o: CXX_COMPI
 #############################################
 # Link the executable MIPT_With_Source
 
-build MIPT_With_Source: CXX_EXECUTABLE_LINKER__MIPT_With_Source_Debug CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/main.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Cell.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Map.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Texture_List.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/building.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Building_List.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Available_Buildings.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/UI_Textures.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Health.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Miner.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/unit.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/barrak.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.0/Hall.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+build MIPT_With_Source: CXX_EXECUTABLE_LINKER__MIPT_With_Source_Debug CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/main.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Cell.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Map.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Texture_List.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/building.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Building_List.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Available_Buildings.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/UI_Textures.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Health.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Miner.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/unit.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/barrak.cpp.o CMakeFiles/MIPT_With_Source.dir/Source_for_SFML2.6.2/Hall.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   DEP_FILE = CMakeFiles/MIPT_With_Source.dir/link.d
   FLAGS = -g
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/MIPT_With_Source.dir/link.d
