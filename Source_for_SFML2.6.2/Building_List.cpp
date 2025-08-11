@@ -14,7 +14,7 @@ std::string extract_filename(const std::string& path) {
     return path.substr(start, end - start);
 }
 
-// Создаем дефолтный пустой словарь
+// Создаем начальный пустой словарь
 Building_List::Building_List() : sound(buffer) {
     PLAYER_NUMBER = 1;
 }
@@ -102,7 +102,7 @@ bool Building_List::Select_Building(int x, int y, std::string texture) {
             if ((it->second->get_Teg() == "Barracks" || it->second->get_Teg() == "Hall") && it->second->get_owner_id() == PLAYER_NUMBER) {
                 // it->second->Action(1);
                 std::string key = extract_filename(texture);
-                if (texture == "../Textures/Miner.png") {
+                if ((texture == "../Textures/Miner.png") || (texture == "../Textures/2/Miner.png")) {
                     building* Building = new Miner(x, y, texture);
                     Buildings.insert(std::pair<std::string, building*>(key, Building));
                     Building->set_Sprite_Color(255,255,255,180);

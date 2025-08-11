@@ -136,7 +136,7 @@ void UI_Textures::set_position_textures() {
     toggleButton.setOutlineThickness(2);
     toggleButton.setOutlineColor(sf::Color::White);
     // Настройка всплывающего окна
-    popupWindow.setSize(sf::Vector2f(1300.f/2048.f * SCREEN_WIDTH + 169, SCREEN_HEIGHT * 0.95f));
+    popupWindow.setSize(sf::Vector2f(1300.f/2048.f * SCREEN_WIDTH + 169, SCREEN_HEIGHT * 5.95f));
     popupWindow.setFillColor(sf::Color(50, 50, 50, 200));
     popupWindow.setOutlineThickness(2);
     popupWindow.setOutlineColor(sf::Color::White);
