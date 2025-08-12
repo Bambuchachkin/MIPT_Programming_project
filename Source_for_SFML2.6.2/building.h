@@ -12,6 +12,7 @@ class building {
 protected:
     int x_coordinate;
     int y_coordinate;
+    int movement;
     float Scale;
     sf::Sprite* Sprite;
     sf::Texture Texture;
@@ -48,6 +49,7 @@ public:
     virtual bool get_Action() const;
     sf::Color get_Color();
     int get_damage() const;
+    int get_movement() const;
 
 };
 

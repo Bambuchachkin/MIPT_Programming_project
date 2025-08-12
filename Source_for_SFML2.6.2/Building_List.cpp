@@ -161,6 +161,11 @@ bool Building_List::Add_Building(int x, int y, std::string texture) {
         Buildings.insert(std::pair<std::string, building*>(key, Building));
         std::cout<<"Frame coordinate: "<<x<<" "<<y<<'\n';
         return true;
+    } else if (key == "Step") {
+        building* Building = new building(x, y, texture);
+        Buildings.insert(std::pair<std::string, building*>(key, Building));
+        std::cout<<"Step coordinate: "<<x<<" "<<y<<'\n';
+        return true;
     } else {
         return Select_Building(x, y, texture);
     }
@@ -236,6 +241,22 @@ bool Building_List::Check_Health(int x_coord, int y_coord, std::string key) {
     return false;
 }
 
+void Building_List::Create_Steps(int current_x, int current_y, int range) {
+    if (range!=0) {
+        Add_Building(current_x, current_y, "../Textures/Step.png");
+        Create_Steps(current_x+1, current_y, range-1);
+        Create_Steps(current_x-1, current_y, range-1);
+        Create_Steps(current_x, current_y+1, range-1);
+        Create_Steps(current_x, current_y-1, range-1);
+        Create_Steps(current_x+1, current_y+1, range-1);
+        Create_Steps(current_x+1, current_y-1, range-1);
+        Create_Steps(current_x-1, current_y+1, range-1);
+        Create_Steps(current_x+1, current_y-1, range-1);
+    }
+    Add_Building(current_x, current_y, "../Textures/Step.png");
+}
+
+
 void Building_List::Hit(int x, int y) {
     for (auto it = Buildings.begin(); it != Buildings.end(); it++) {
         if (it->second->get_x_coordinate() == x && it->second->get_y_coordinate() == y) {
@@ -263,13 +284,19 @@ bool Building_List::Hit(building* Building, int x, int y, int damage) {
 bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
     // 2. Проверяем клик по юниту
     for (auto& pair : Buildings) {
-        if (pair.second && pair.second->get_x_coordinate() == x && pair.second->get_y_coordinate() == y && (pair.second->get_Teg() == "Warrior" || pair.second->get_Teg() == "Miner") && pair.second->get_owner_id() == PLAYER_NUMBER) {
+        if (pair.second && pair.second->get_x_coordinate() == x &&
+            pair.second->get_y_coordinate() == y &&
+            (pair.first == "Warrior" ||
+                pair.first == "Miner") &&
+                pair.second->get_owner_id() == PLAYER_NUMBER) {
             for (auto& pair : Buildings) {
-                if ((pair.first == "Warrior" || pair.first == "Miner") && pair.second) {
+                if ((pair.first == "Warrior" || pair.first == "Miner") &&
+                    pair.second) {
                     pair.second->Action(-1);
                 }
             }
             pair.second->Action(1);
+            Create_Steps(x, y, pair.second->get_movement());
             return false;
             }
     }

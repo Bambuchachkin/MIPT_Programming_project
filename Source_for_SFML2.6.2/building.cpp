@@ -28,6 +28,7 @@ building::building(int x, int y, std::string Building_Texture) :sound(buffer) {
     Texture_Name = Building_Texture;
     Teg = extract_filename_b(Texture_Name);
     damage = 0;
+    movement = 0;
 }
 
 // building::~building() {
@@ -117,4 +118,8 @@ sf::Color  building::get_Color() {
 
 int building::get_damage() const {
     return damage;
+}
+
+int building::get_movement() const {
+    return movement;
 }

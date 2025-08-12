@@ -71,18 +71,41 @@ int main() {
     Created_Map.set_cell_height(scaledBounds.getSize().y);
 
     // Создание фона
-    sf::Texture sky_texture;
-    if (!sky_texture.loadFromFile("../Textures/Sky.png")) {
-        std::cerr << "Failed to load sky texture!" << std::endl;
-        return 1;
-    }
-    sf::Sprite Sky_Sprite(sky_texture);
-    sf::FloatRect ScaledBounds = (Sky_Sprite).getGlobalBounds();
+    sf::Texture sky_texture_0;
+    sky_texture_0.loadFromFile("../Textures/S0.png");
+    sf::Sprite Sky_Sprite_0(sky_texture_0);
+    sf::FloatRect ScaledBounds = (Sky_Sprite_0).getGlobalBounds();
     float Sky_WIDTH = ScaledBounds.getSize().x;
-    Sky_Sprite.setScale({1.8f*SCREEN_WIDTH/Sky_WIDTH,1.8f*SCREEN_WIDTH/Sky_WIDTH});
-    Sky_Sprite.setOrigin({0.5f*Sky_WIDTH,0.3f*Sky_WIDTH});
-    Sky_Sprite.setPosition({1.0f*Sky_WIDTH,0.5f*Sky_WIDTH});
-    // Sky_Sprite.setPosition({-0.5f*Sky_WIDTH,-0.3f*Sky_WIDTH});
+    Sky_Sprite_0.setScale({1.8f*SCREEN_WIDTH/Sky_WIDTH,1.8f*SCREEN_WIDTH/Sky_WIDTH});
+    Sky_Sprite_0.setOrigin({0.5f*Sky_WIDTH,0.3f*Sky_WIDTH});
+    Sky_Sprite_0.setPosition({1.0f*Sky_WIDTH,0.5f*Sky_WIDTH});
+
+    sf::Texture sky_texture_1;
+    sky_texture_1.loadFromFile("../Textures/S1.png");
+    sf::Sprite Sky_Sprite_1(sky_texture_1);
+    ScaledBounds = (Sky_Sprite_1).getGlobalBounds();
+    Sky_WIDTH = ScaledBounds.getSize().x;
+    Sky_Sprite_1.setScale({1.8f*SCREEN_WIDTH/Sky_WIDTH,1.8f*SCREEN_WIDTH/Sky_WIDTH});
+    Sky_Sprite_1.setOrigin({0.5f*Sky_WIDTH,0.3f*Sky_WIDTH});
+    Sky_Sprite_1.setPosition({1.0f*Sky_WIDTH,0.5f*Sky_WIDTH});
+
+    sf::Texture sky_texture_2;
+    sky_texture_2.loadFromFile("../Textures/S2.png");
+    sf::Sprite Sky_Sprite_2(sky_texture_2);
+    ScaledBounds = (Sky_Sprite_2).getGlobalBounds();
+    Sky_WIDTH = ScaledBounds.getSize().x;
+    Sky_Sprite_2.setScale({1.8f*SCREEN_WIDTH/Sky_WIDTH,1.8f*SCREEN_WIDTH/Sky_WIDTH});
+    Sky_Sprite_2.setOrigin({0.5f*Sky_WIDTH,0.3f*Sky_WIDTH});
+    Sky_Sprite_2.setPosition({1.0f*Sky_WIDTH,0.5f*Sky_WIDTH});
+
+    sf::Texture sky_texture_3;
+    sky_texture_3.loadFromFile("../Textures/S3.png");
+    sf::Sprite Sky_Sprite_3(sky_texture_3);
+    ScaledBounds = (Sky_Sprite_3).getGlobalBounds();
+    Sky_WIDTH = ScaledBounds.getSize().x;
+    Sky_Sprite_3.setScale({1.8f*SCREEN_WIDTH/Sky_WIDTH,1.8f*SCREEN_WIDTH/Sky_WIDTH});
+    Sky_Sprite_3.setOrigin({0.5f*Sky_WIDTH,0.3f*Sky_WIDTH});
+    Sky_Sprite_3.setPosition({1.0f*Sky_WIDTH,0.5f*Sky_WIDTH});
 
     // UI Текстуры
     UI_Textures uiTextures;
@@ -139,19 +162,32 @@ int main() {
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) && (Created_Map.get_zero_x())<SCREEN_HEIGHT/1.0f+Created_Map.get_cell_height()) {
             // std::cout<<Created_Map.get_zero_x()<<std::endl;
             Created_Map.set_zero_x(Created_Map.get_zero_x() + Created_Map.get_scale()*SPEED);
-            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x, Sky_Sprite.getPosition().y + 1/Created_Map.get_scale()*SPEED/100});
+            Sky_Sprite_0.setPosition({Sky_Sprite_0.getPosition().x, Sky_Sprite_0.getPosition().y + 1/Created_Map.get_scale()*SPEED/100});
+            Sky_Sprite_1.setPosition({Sky_Sprite_1.getPosition().x, Sky_Sprite_1.getPosition().y + 1/Created_Map.get_scale()*SPEED/100});
+            Sky_Sprite_2.setPosition({Sky_Sprite_2.getPosition().x, Sky_Sprite_2.getPosition().y + 1/Created_Map.get_scale()*SPEED/150});
+            Sky_Sprite_3.setPosition({Sky_Sprite_3.getPosition().x, Sky_Sprite_3.getPosition().y + 1/Created_Map.get_scale()*SPEED/200});
         }
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) && (Created_Map.get_zero_x()>Created_Map.get_scale()*Created_Map.get_cell_height()*0.577*(-1.0f)*Created_Map.Get_Size())){
             Created_Map.set_zero_x(Created_Map.get_zero_x() - Created_Map.get_scale()*SPEED);
-            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x, Sky_Sprite.getPosition().y - 1/Created_Map.get_scale()*SPEED/100});
+            Sky_Sprite_0.setPosition({Sky_Sprite_0.getPosition().x, Sky_Sprite_0.getPosition().y - 1/Created_Map.get_scale()*SPEED/100});
+            Sky_Sprite_1.setPosition({Sky_Sprite_1.getPosition().x, Sky_Sprite_1.getPosition().y - 1/Created_Map.get_scale()*SPEED/100});
+            Sky_Sprite_2.setPosition({Sky_Sprite_2.getPosition().x, Sky_Sprite_2.getPosition().y - 1/Created_Map.get_scale()*SPEED/150});
+            Sky_Sprite_3.setPosition({Sky_Sprite_3.getPosition().x, Sky_Sprite_3.getPosition().y - 1/Created_Map.get_scale()*SPEED/200});
         }
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) && (Created_Map.get_zero_y()+Created_Map.get_scale()*Created_Map.get_cell_width()*Created_Map.Get_Size()/2>0)){
             Created_Map.set_zero_y(Created_Map.get_zero_y() - Created_Map.get_scale()*SPEED);
-            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x - 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite.getPosition().y});
+            Sky_Sprite_0.setPosition({Sky_Sprite_0.getPosition().x - 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite_0.getPosition().y});
+            Sky_Sprite_1.setPosition({Sky_Sprite_1.getPosition().x - 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite_1.getPosition().y});
+            Sky_Sprite_2.setPosition({Sky_Sprite_2.getPosition().x - 1/Created_Map.get_scale()*SPEED/150, Sky_Sprite_2.getPosition().y});
+            Sky_Sprite_3.setPosition({Sky_Sprite_3.getPosition().x - 1/Created_Map.get_scale()*SPEED/200, Sky_Sprite_3.getPosition().y});
         }
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) && (Created_Map.get_zero_y()-Created_Map.get_scale()*Created_Map.get_cell_width()*Created_Map.Get_Size()/2<SCREEN_WIDTH)){
             Created_Map.set_zero_y(Created_Map.get_zero_y() + Created_Map.get_scale()*SPEED);
-            Sky_Sprite.setPosition({Sky_Sprite.getPosition().x + 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite.getPosition().y});
+            Sky_Sprite_0.setPosition({Sky_Sprite_0.getPosition().x + 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite_0.getPosition().y});
+            Sky_Sprite_1.setPosition({Sky_Sprite_1.getPosition().x + 1/Created_Map.get_scale()*SPEED/100, Sky_Sprite_1.getPosition().y});
+            Sky_Sprite_2.setPosition({Sky_Sprite_2.getPosition().x + 1/Created_Map.get_scale()*SPEED/150, Sky_Sprite_2.getPosition().y});
+            Sky_Sprite_3.setPosition({Sky_Sprite_3.getPosition().x + 1/Created_Map.get_scale()*SPEED/200, Sky_Sprite_3.getPosition().y});
+
         }
 
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) && (Created_Map.get_scale()<1)) {
@@ -207,7 +243,10 @@ int main() {
         // Отрисовка
         window.clear(sf::Color::Black);
         // Отрисовка фона
-        window.draw(Sky_Sprite);
+        window.draw(Sky_Sprite_0);
+        window.draw(Sky_Sprite_1);
+        window.draw(Sky_Sprite_2);
+        window.draw(Sky_Sprite_3);
         // Отрисовка клеточек
         for (unsigned int i = 0; i < Created_Map.Get_Size(); i++) {
             for (unsigned int j = 0; j < Created_Map.Get_Size(); j++) {

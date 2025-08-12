@@ -42,6 +42,7 @@ public:
     building* Find_Anamy(int x, int y);
     bool Hit (building* Building, int x, int y, int damage);
     bool contains(building* build); // Проверка существования здания в списке
+    void Create_Steps(int current_x, int current_y, int range);
 };
 
 
