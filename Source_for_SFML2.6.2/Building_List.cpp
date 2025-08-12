@@ -241,20 +241,52 @@ bool Building_List::Check_Health(int x_coord, int y_coord, std::string key) {
     return false;
 }
 
-void Building_List::Create_Steps(int current_x, int current_y, int range) {
-    if (range!=0) {
-        Add_Building(current_x, current_y, "../Textures/Step.png");
-        Create_Steps(current_x+1, current_y, range-1);
-        Create_Steps(current_x-1, current_y, range-1);
-        Create_Steps(current_x, current_y+1, range-1);
-        Create_Steps(current_x, current_y-1, range-1);
-        Create_Steps(current_x+1, current_y+1, range-1);
-        Create_Steps(current_x+1, current_y-1, range-1);
-        Create_Steps(current_x-1, current_y+1, range-1);
-        Create_Steps(current_x+1, current_y-1, range-1);
+void Building_List::Create_Steps(int x_0, int y_0, int current_x, int current_y, int range, std::vector<std::vector<Cell*>>* Cells_Data) {
+    if (current_x>=0 && current_x<Cells_Data->size() && current_y>=0 && current_y<Cells_Data->size()) {
+        if ((*Cells_Data)[current_x][current_y]->get_Texture_Name()=="../Textures/MarsHoulLendPattern.png ") {
+            range-=1000;
+        }
+        if (Find_Anamy(current_x,current_y)) {
+            Add_Building(current_x, current_y, "../Textures/Step.png");
+            range-=1000;
+        }
+        if ((*Cells_Data)[current_x][current_y]->get_Texture_Name()=="../Textures/MarsMountainLendPattern.png ") {
+            range-=1;
+        }
+        if (range>0) {
+            if ((x_0!=current_x || y_0!=current_y) && ((*Cells_Data)[current_x][current_y]->get_Texture_Name()!="../Textures/MarsHoulLendPattern.png ")
+                &&(!Find_Building(current_x, current_y, "Miner"))
+                &&(!Find_Building(current_x, current_y, "Warrior"))){
+                Add_Building(current_x, current_y, "../Textures/Step.png");
+            }
+            Create_Steps(x_0, y_0, current_x+1, current_y, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x-1, current_y, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x, current_y+1, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x, current_y-1, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x+1, current_y+1, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x+1, current_y-1, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x-1, current_y+1, range-1, Cells_Data);
+            Create_Steps(x_0, y_0, current_x-1, current_y-1, range-1, Cells_Data);
+        }
+        if (range==0 && (x_0!=current_x || y_0!=current_y) && ((*Cells_Data)[current_x][current_y]->get_Texture_Name()!="../Textures/MarsHoulLendPattern.png ")
+            &&(!Find_Building(current_x, current_y, "Miner"))
+            &&(!Find_Building(current_x, current_y, "Warrior"))){
+            Add_Building(current_x, current_y, "../Textures/Step.png");
+        }
     }
-    Add_Building(current_x, current_y, "../Textures/Step.png");
 }
+
+void Building_List::Delete_Steps() {
+    // уничтожаем все step
+    STEP:
+    for (auto it=Buildings.begin(); it!=Buildings.end(); it++) {
+        if (it->first == "Step") {
+            Destroy_Building(it->second->get_x_coordinate(), it->second->get_y_coordinate(), "Step");
+            goto STEP;
+        }
+    }
+}
+
 
 
 void Building_List::Hit(int x, int y) {
@@ -274,14 +306,17 @@ void Building_List::Hit(int x, int y) {
 }
 
 bool Building_List::Hit(building* Building, int x, int y, int damage) {
-    Building->set_health(-damage);
-    buffer.loadFromFile("../Sound/Hit.mp3");
-    sound.setVolume(20);
-    sound.play();
+    if (Find_Building(x, y, "Step")) {
+        Building->set_health(-damage);
+        buffer.loadFromFile("../Sound/Hit.mp3");
+        sound.setVolume(20);
+        sound.play();
+    }
     return Check_Health(x,y,Building->get_Teg());
 }
 
-bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
+bool Building_List::Move(int x, int y, int PLAYER_NUMBER, std::vector<std::vector<Cell*>>* Cells_Data) {
+    sf::Color color = {255, 255, 255};
     // 2. Проверяем клик по юниту
     for (auto& pair : Buildings) {
         if (pair.second && pair.second->get_x_coordinate() == x &&
@@ -289,24 +324,29 @@ bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
             (pair.first == "Warrior" ||
                 pair.first == "Miner") &&
                 pair.second->get_owner_id() == PLAYER_NUMBER) {
-            for (auto& pair : Buildings) {
-                if ((pair.first == "Warrior" || pair.first == "Miner") &&
-                    pair.second) {
-                    pair.second->Action(-1);
-                }
-            }
+            Global_Diactivate();
+            // for (auto& pair : Buildings) {
+            //     if ((pair.first == "Warrior" || pair.first == "Miner") &&
+            //         pair.second) {
+            //         pair.second->Action(-1);
+            //         Delete_Steps();
+            //     }
+            // }
             pair.second->Action(1);
-            Create_Steps(x, y, pair.second->get_movement());
+            if (pair.second->get_Color() == color) {
+                Create_Steps(x, y, x, y, pair.second->get_movement(), Cells_Data);
+            }
             return false;
             }
     }
     // 3. Если есть активный юнит - перемещаем его
     for (auto& pair : Buildings) {
-        sf::Color color = {255, 255, 255};
+        // sf::Color color = {255, 255, 255};
         if (pair.second && (pair.first == "Warrior" || pair.first == "Miner") && pair.second->get_Action() && pair.second->get_Color() == color) {
-            if (abs(x-pair.second->get_x_coordinate()) < 2 && abs(y-pair.second->get_y_coordinate()) < 2) {
-                if (Find_Anamy(x,y)) {
-                    if (Hit(Find_Anamy(x,y), x, y, pair.second->get_damage()) && !Find_Anamy(x,y)) {
+            /*if (abs(x-pair.second->get_x_coordinate()) < 2 && abs(y-pair.second->get_y_coordinate()) < 2) {*/
+                if (Find_Anamy(x,y) && Find_Building(x, y, "Step")) {
+                    if (Hit(Find_Anamy(x,y), x, y, pair.second->get_damage()) && !Find_Anamy(x,y)
+                       && Find_Building(x, y, "Step")) {
                         pair.second->set_x_coordinate(x);
                         pair.second->set_y_coordinate(y);
                     }
@@ -314,7 +354,8 @@ bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
                     pair.second->set_Sprite_Color(255,255,255,180);
                     std::cout<<"DAMAGE : "<<pair.second->get_damage()<<"\n";
                     // std::cout<<"HEALTH : "<<Find_Anamy(x,y)->get_health()<<"\n";
-                } else {
+                } else if (Find_Building(x, y, "Step")){
+                    std::cout<<Find_Building(x, y, "Step");
                     pair.second->set_x_coordinate(x);
                     pair.second->set_y_coordinate(y);
                     pair.second->Action(-1); // Деактивируем после перемещения
@@ -326,12 +367,14 @@ bool Building_List::Move(int x, int y, int PLAYER_NUMBER) {
                         }
                     }
                 }
+                Global_Diactivate();
                 return true;
-            } else {
+            /*} else {
                 pair.second->Action(-1);
-            }
+            }*/
         }
     }
+    Global_Diactivate();
     return false;
 }
 
@@ -366,6 +409,7 @@ void Building_List::Global_Diactivate() {
     for (auto& pair : Buildings) {
         pair.second->Action(-1);
     }
+    Delete_Steps();
 }
 
 building* Building_List::get_Sprite_Active_Unit() {

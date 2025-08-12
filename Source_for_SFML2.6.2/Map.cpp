@@ -166,6 +166,7 @@ void Map::Pressed_Check(std::vector<int>* v) {
     building_list->Find_Building("FramePattern")->set_y_coordinate(y);
     // Обрабатываем строительство
     if (BUILDING_TEXTURE != "") { // Доступ к сущности уже был проверен перед вызовом
+        building_list->Global_Diactivate();
         if (BUILDING_TEXTURE == "../Textures/Barracks.png") {
             if (building_list->Count_Buildings("Hall") == 0) {
                 std::cout << "Barracks "<< building_list->Count_Buildings("Barrack") << std::endl;
@@ -192,22 +193,18 @@ void Map::Pressed_Check(std::vector<int>* v) {
                 healthDisplays.push_back(healthDisplay);
             }
 
-        } /*else {
-            building_list->Select_Building(x, y, BUILDING_TEXTURE);
-            building_list->Find_Building(x, y, extract_filename_M(BUILDING_TEXTURE))->set_Sprite_Origin(CELL_WIDTH / 2.0f, CELL_HEIGHT * 1.0f);
-            building_list->Find_Building(x, y, extract_filename_M(BUILDING_TEXTURE))->set_owner_id(PLAYER_NUMBER);
-            // BUILDING_TEXTURE = "";
-            //функция для создания юнитов и других подвижных сущностей// Доделать определение ключа текстуры
-        }*/
+        }
     } else {
-        // building_list->Hit(x,y);
-        if (Cells_Data[x][y]->get_Texture_Name() != "../Textures/MarsHoulLendPattern.png ") {
-            // std::cout<<Cells_Data[x][y]->get_Texture_Name()<<"eljjnejjnvlek"<<'\n';
-            building_list->Move(x,y, PLAYER_NUMBER);
-        } else {
-            building_list->Global_Diactivate();
+            building_list->Move(x,y, PLAYER_NUMBER, &Cells_Data);
+    }
+    // устанавливаем якорные точки для каждого step
+    for (auto it = building_list->Buildings.begin(); it != building_list->Buildings.end(); it++) {
+        if (it->first == "Step") {
+            it->second->set_Sprite_Origin(CELL_WIDTH / 2.0f, CELL_HEIGHT * 1.0f);
+            it->second->set_Sprite_Color(255,255,255,180);
         }
     }
+
     BUILDING_TEXTURE = "";
 }
 
@@ -309,7 +306,7 @@ void Map::Animation() {
     if (abs(Sprite_Flactuation[0]) > max_flactuation) {
         Sprite_Flactuation[1] = - Sprite_Flactuation[1];
     }
-    Sprite_Flactuation[0] += Sprite_Flactuation[1]*(max_flactuation/20.0f/3.5f);
+    Sprite_Flactuation[0] += Sprite_Flactuation[1]*(max_flactuation/40.0f/3.5f);
     if (building_list->get_Sprite_Active_Unit()) {
         building* Unit = building_list->get_Sprite_Active_Unit();
         Set_Sprite_Static_Position(Unit->get_Sprite_Pointer(), Unit->get_x_coordinate(), Unit->get_y_coordinate(), Sprite_Flactuation[0]);

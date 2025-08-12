@@ -117,7 +117,8 @@ int main() {
     // Настраиваем игровые объекты
     Texture_List texture_list(&Created_Map, "Standart");
     Created_Map.get_Building_list()->Add_Building(0,0,"../Textures/FramePattern.png");
-    Created_Map.get_Building_list()->Find_Building("FramePattern")->set_Sprite_Origin(Created_Map.get_cell_width()/2.0f, Created_Map.get_cell_height()*1.0f);
+    Created_Map.get_Building_list()->Find_Building("FramePattern")->
+    set_Sprite_Origin(Created_Map.get_cell_width()/2.0f, Created_Map.get_cell_height()*1.0f);
     Created_Map.get_Building_list()->Find_Building("FramePattern")->set_Sprite_Color(255, 255, 255, 150);
 
     // Приступаем к переопределению клеточек

@@ -5,6 +5,7 @@
 #include <map>
 #include "building.h"
 #include <iostream>
+#include "Cell.h"
 #include "Health.h"
 
 // Словарь, содержащий сведения о всех постройках на карте.
@@ -31,7 +32,7 @@ public:
     building* Find_Building(std::string key);
     bool Check_Health(int x_coord, int y_coord, std::string key);
     void Hit(int x_coord, int y_coord);
-    bool Move(int x_coord, int y_coord, int PLAYER_NUMBER);
+    bool Move(int x_coord, int y_coord, int PLAYER_NUMBER, std::vector<std::vector<Cell*>>* Cells_Data);
     bool Select_Building(int x_coord, int y_coord, std::string texture);
     int Count_Buildings(std::string key);
     int Stonks(int PLAYER_NUMBER);
@@ -42,7 +43,8 @@ public:
     building* Find_Anamy(int x, int y);
     bool Hit (building* Building, int x, int y, int damage);
     bool contains(building* build); // Проверка существования здания в списке
-    void Create_Steps(int current_x, int current_y, int range);
+    void Create_Steps(int x_0, int y_0, int current_x, int current_y, int range, std::vector<std::vector<Cell*>>* Cells_Data);
+    void Delete_Steps();
 };
 
 
