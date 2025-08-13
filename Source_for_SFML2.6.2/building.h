@@ -13,6 +13,7 @@ protected:
     int x_coordinate;
     int y_coordinate;
     int movement;
+    int range;
     float Scale;
     sf::Sprite* Sprite;
     sf::Texture Texture;
@@ -50,6 +51,7 @@ public:
     sf::Color get_Color();
     int get_damage() const;
     int get_movement() const;
+    int get_range() const;
 
 };
 

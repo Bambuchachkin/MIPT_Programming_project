@@ -202,6 +202,13 @@ void Map::Pressed_Check(std::vector<int>* v) {
         if (it->first == "Step") {
             it->second->set_Sprite_Origin(CELL_WIDTH / 2.0f, CELL_HEIGHT * 1.0f);
             it->second->set_Sprite_Color(255,255,255,180);
+            for (auto it = building_list->Buildings.begin(); it != building_list->Buildings.end(); it++) {
+                if (it->second->get_Teg() == "Step" &&
+                    building_list->Find_Anamy(it->second->get_x_coordinate(),it->second->get_y_coordinate())) {
+                    it->second->set_Sprite_Color(255,0,0,180);
+                }
+            }
+            // it->second->set_Sprite_Color(255,0,0,180);
         }
     }
 

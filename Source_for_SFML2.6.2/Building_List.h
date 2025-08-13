@@ -43,7 +43,7 @@ public:
     building* Find_Anamy(int x, int y);
     bool Hit (building* Building, int x, int y, int damage);
     bool contains(building* build); // Проверка существования здания в списке
-    void Create_Steps(int x_0, int y_0, int current_x, int current_y, int range, std::vector<std::vector<Cell*>>* Cells_Data);
+    void Create_Steps(int depth, int current_x, int current_y, building* pointer, std::vector<std::vector<Cell*>>* Cells_Data);
     void Delete_Steps();
 };
 

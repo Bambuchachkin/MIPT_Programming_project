@@ -262,7 +262,14 @@ int main() {
             it->second->set_Sprite_Scale(Created_Map.get_scale());
             Created_Map.Set_Sprite_Static_Position(it->second->get_Sprite_Pointer(), it->second->get_x_coordinate(), it->second->get_y_coordinate());
             Created_Map.Animation();
-            window.draw(*(it->second->get_Sprite_Pointer()));
+            if (it->second->get_Teg() == "Step") {
+                window.draw(*(it->second->get_Sprite_Pointer()));
+            }
+        }
+        for (auto it = Created_Map.get_Building_list()->Buildings.begin(); it!= Created_Map.get_Building_list()->Buildings.end(); it++) {
+            if (it->second->get_Teg() != "Step") {
+                window.draw(*(it->second->get_Sprite_Pointer()));
+            }
         }
 
         // Отрисовка UI

@@ -169,14 +169,6 @@ bool Building_List::Add_Building(int x, int y, std::string texture) {
     } else {
         return Select_Building(x, y, texture);
     }
-    /*else if (key == "grass" || key == "Warrior") {
-        building* Building = new unit(x, y, texture);
-        Buildings.insert(std::pair<std::string, building*>(key, Building));
-    } else {
-        building* Building = new building(x, y, texture);
-        Buildings.insert(std::pair<std::string, building*>(key, Building));
-    }*/
-    return false;
 }
 
 // Чтобы уничтожить здание, нам нужно указать его координаты и владельца
@@ -241,12 +233,16 @@ bool Building_List::Check_Health(int x_coord, int y_coord, std::string key) {
     return false;
 }
 
-void Building_List::Create_Steps(int x_0, int y_0, int current_x, int current_y, int range, std::vector<std::vector<Cell*>>* Cells_Data) {
+void Building_List::Create_Steps(int depth, int current_x, int current_y, building* pointer, std::vector<std::vector<Cell*>>* Cells_Data) {
+    int x_0 = pointer->get_x_coordinate();
+    int y_0 = pointer->get_y_coordinate();
+    int range = pointer->get_movement() - depth;
+    int atak = pointer->get_range();
     if (current_x>=0 && current_x<Cells_Data->size() && current_y>=0 && current_y<Cells_Data->size()) {
         if ((*Cells_Data)[current_x][current_y]->get_Texture_Name()=="../Textures/MarsHoulLendPattern.png ") {
             range-=1000;
         }
-        if (Find_Anamy(current_x,current_y)) {
+        if (Find_Anamy(current_x,current_y) && atak >= depth) {
             Add_Building(current_x, current_y, "../Textures/Step.png");
             range-=1000;
         }
@@ -259,14 +255,14 @@ void Building_List::Create_Steps(int x_0, int y_0, int current_x, int current_y,
                 &&(!Find_Building(current_x, current_y, "Warrior"))){
                 Add_Building(current_x, current_y, "../Textures/Step.png");
             }
-            Create_Steps(x_0, y_0, current_x+1, current_y, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x-1, current_y, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x, current_y+1, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x, current_y-1, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x+1, current_y+1, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x+1, current_y-1, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x-1, current_y+1, range-1, Cells_Data);
-            Create_Steps(x_0, y_0, current_x-1, current_y-1, range-1, Cells_Data);
+            Create_Steps(depth+1, current_x+1, current_y, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x-1, current_y, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x, current_y+1, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x, current_y-1, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x+1, current_y+1, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x+1, current_y-1, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x-1, current_y+1, pointer, Cells_Data);
+            Create_Steps(depth+1, current_x-1, current_y-1, pointer, Cells_Data);
         }
         if (range==0 && (x_0!=current_x || y_0!=current_y) && ((*Cells_Data)[current_x][current_y]->get_Texture_Name()!="../Textures/MarsHoulLendPattern.png ")
             &&(!Find_Building(current_x, current_y, "Miner"))
@@ -325,16 +321,9 @@ bool Building_List::Move(int x, int y, int PLAYER_NUMBER, std::vector<std::vecto
                 pair.first == "Miner") &&
                 pair.second->get_owner_id() == PLAYER_NUMBER) {
             Global_Diactivate();
-            // for (auto& pair : Buildings) {
-            //     if ((pair.first == "Warrior" || pair.first == "Miner") &&
-            //         pair.second) {
-            //         pair.second->Action(-1);
-            //         Delete_Steps();
-            //     }
-            // }
             pair.second->Action(1);
             if (pair.second->get_Color() == color) {
-                Create_Steps(x, y, x, y, pair.second->get_movement(), Cells_Data);
+                Create_Steps(0,x, y, pair.second, Cells_Data);
             }
             return false;
             }

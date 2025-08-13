@@ -7,6 +7,7 @@ unit::unit(int x, int y, std::string texture) : building(x, y, texture){
     std::cout << "Unit have been created" << '\n';
     damage = 100;
     movement = 2;
+    range = 1;
 
     buffer.loadFromFile("../Sound/both.wav");
     sound.setVolume(20);
